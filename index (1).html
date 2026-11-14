@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101a35">
+<title>PRIORITAS — Misi Uang Terbatas</title>
+<style>
+:root{--bg:#0b1226;--panel:#121e3b;--panel2:#182748;--line:rgba(255,255,255,.1);--text:#f4f7ff;--muted:#aab7d2;--mint:#5de0b3;--cyan:#62c8ff;--gold:#ffd36a;--pink:#ff8fa8;--shadow:0 18px 50px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 500px at 85% -10%,#233d70 0%,transparent 60%),radial-gradient(700px 500px at -10% 20%,#172e55 0%,transparent 60%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.shell{max-width:1240px;margin:auto;padding:22px 22px 48px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--mint),var(--cyan));display:grid;place-items:center;color:#092033;font-size:23px;font-weight:1000;box-shadow:0 8px 25px #5de0b344}.brand h1{font-size:19px;letter-spacing:2px;margin:0}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.5px;margin-top:3px}.topright{display:flex;gap:9px;align-items:center}.pill{border:1px solid var(--line);background:#ffffff0b;color:var(--muted);padding:8px 12px;border-radius:99px;font-size:12px}.iconbtn{background:#ffffff0b;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:9px 12px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;padding:7px;background:#ffffff08;border:1px solid var(--line);border-radius:16px;margin-bottom:20px}.nav button{border:0;background:transparent;color:var(--muted);padding:10px 15px;border-radius:11px;font-weight:700;font-size:13px}.nav button.active{background:linear-gradient(135deg,#5de0b3,#62c8ff);color:#092033;box-shadow:0 5px 18px #5de0b333}
+.page{display:none}.page.active{display:block}.hero{display:grid;grid-template-columns:1.35fr .85fr;gap:18px;margin-bottom:18px}.heroMain{padding:30px;border:1px solid var(--line);border-radius:25px;background:linear-gradient(125deg,#1c3158,#142344 65%,#183451);position:relative;overflow:hidden;box-shadow:var(--shadow)}.heroMain:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-80px;top:-100px;background:radial-gradient(circle,#5de0b344,transparent 68%)}.eyebrow{color:var(--mint);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.hero h2{font-size:clamp(30px,5vw,52px);line-height:1.04;margin:12px 0}.hero p{color:#c4d0e6;line-height:1.65;max-width:610px;margin:0 0 22px}.btn{border:0;border-radius:13px;padding:12px 18px;font-weight:850;transition:.18s transform,.18s filter}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.primary{background:linear-gradient(135deg,var(--mint),var(--cyan));color:#082039;box-shadow:0 8px 22px #5de0b32a}.secondary{background:#ffffff12;border:1px solid var(--line);color:var(--text)}.danger{background:#ff8fa81a;border:1px solid #ff8fa844;color:#ffb2c2}.heroSide{border:1px solid var(--line);border-radius:25px;background:linear-gradient(160deg,#1a2a4c,#111c36);padding:23px;display:flex;flex-direction:column;justify-content:space-between;min-height:245px}.coinart{font-size:56px;text-align:right;filter:drop-shadow(0 8px 16px #0006)}.heroSide h3{font-size:16px;margin:0 0 7px}.heroSide p{font-size:13px;color:var(--muted);line-height:1.55;margin:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.stat{background:#ffffff09;border:1px solid var(--line);border-radius:17px;padding:15px}.stat label{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.stat strong{font-size:20px}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.75fr);gap:17px}.card{background:linear-gradient(160deg,#172644,#111c35);border:1px solid var(--line);border-radius:21px;padding:21px;box-shadow:var(--shadow)}.card h3{margin:0 0 9px;font-size:17px}.muted{color:var(--muted)}.small{font-size:12px;line-height:1.55}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:24px 0 12px}.sectionhead h3{margin:0;font-size:19px}.levelgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.level{background:#ffffff08;border:1px solid var(--line);border-radius:17px;padding:14px;min-height:120px}.level b{display:block;font-size:12px;margin:8px 0 5px}.level span{font-size:11px;color:var(--muted)}.level em{font-style:normal;font-size:22px}.progress{height:8px;border-radius:99px;background:#ffffff12;overflow:hidden}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--cyan));border-radius:99px;transition:width .3s}
+.gamehead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.gamehead h2{margin:0;font-size:22px}.tag{font-size:11px;color:var(--mint);font-weight:900;letter-spacing:1px;text-transform:uppercase}.gamegrid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px}.scenario{background:linear-gradient(145deg,#1d3155,#172541);border:1px solid #ffffff17;border-radius:22px;padding:23px;min-height:390px;position:relative;overflow:hidden}.scenario:after{content:"";position:absolute;right:-30px;top:-30px;width:170px;height:170px;border-radius:50%;background:#62c8ff0c;pointer-events:none}.sceneIcon{font-size:42px;margin-bottom:13px}.scenario h3{font-size:24px;margin:5px 0 10px}.scenario p{color:#c2cee4;line-height:1.65}.budgetbar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.budgetchip{padding:8px 11px;background:#07132988;border:1px solid var(--line);border-radius:11px;font-size:12px;color:#d9e5f7}.choices{display:grid;gap:10px;margin-top:18px;position:relative;z-index:1}.choice{display:flex;align-items:center;gap:12px;text-align:left;background:#ffffff0b;border:1px solid #ffffff19;border-radius:14px;padding:13px;color:var(--text);transition:.16s}.choice:hover{background:#ffffff14;border-color:#5de0b377;transform:translateX(3px)}.choice .letter{width:29px;height:29px;flex:none;border-radius:9px;background:#ffffff13;display:grid;place-items:center;font-weight:900;color:var(--mint)}.choice strong{display:block;font-size:13px}.choice small{display:block;color:var(--muted);margin-top:3px;font-size:11px}.choice:disabled{opacity:.65;cursor:default;transform:none}.sidecard{background:#ffffff08;border:1px solid var(--line);border-radius:19px;padding:18px;margin-bottom:13px}.meter{margin:13px 0}.meterhead{display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px}.meter .progress{height:7px}.feedback{margin-top:15px;padding:14px;border-radius:14px;background:#5de0b311;border:1px solid #5de0b344;line-height:1.55;font-size:13px;display:none}.feedback.show{display:block}.feedback.bad{background:#ff8fa811;border-color:#ff8fa844}.nextrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px}.ranklist{display:grid;gap:9px;margin-top:16px}.rankitem{display:flex;align-items:center;gap:10px;padding:12px;border-radius:13px;background:#ffffff0a;border:1px solid var(--line)}.rankitem select{margin-left:auto;background:#0c1730;color:white;border:1px solid var(--line);padding:8px;border-radius:9px}.allocation{display:grid;gap:12px;margin-top:16px}.allocrow{display:grid;grid-template-columns:1fr 120px 82px;gap:10px;align-items:center;font-size:13px}.allocrow input{width:100%;accent-color:var(--mint)}.allocrow output{text-align:right;color:var(--mint);font-weight:800}.resultbanner{text-align:center;padding:32px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#1d3155,#14203b)}.resultbanner .big{font-size:65px}.resultbanner h2{font-size:30px;margin:8px}.endinggrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}.ending{padding:16px;border:1px solid var(--line);border-radius:16px;background:#ffffff08}.ending.lock{opacity:.5;filter:grayscale(.6)}.ending .emoji{font-size:30px}.ending h4{margin:7px 0}.reviewform{display:grid;gap:12px;max-width:650px}.field{display:grid;gap:6px}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field textarea{background:#08152d;border:1px solid var(--line);border-radius:12px;padding:12px;color:white;width:100%}.field textarea{min-height:110px;resize:vertical}.stars{display:flex;gap:7px}.stars button{border:1px solid var(--line);background:#ffffff0b;border-radius:10px;padding:9px 12px;color:var(--muted);font-size:20px}.stars button.selected{background:#ffd36a22;color:var(--gold);border-color:#ffd36a66}.reviewitem{padding:14px;border:1px solid var(--line);border-radius:14px;background:#ffffff08;margin-top:10px}.footer{color:#8190ad;text-align:center;font-size:11px;padding:25px 0 5px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:#eafcf6;color:#092c27;padding:12px 18px;border-radius:12px;font-weight:800;font-size:13px;box-shadow:var(--shadow);transition:.25s;z-index:10}.toast.show{transform:translateX(-50%) translateY(0)}.hidden{display:none!important}.note{border-left:3px solid var(--gold);padding:10px 13px;background:#ffd36a0d;color:#d9dfeb;border-radius:0 10px 10px 0;font-size:12px;line-height:1.6}
+
+/* Layered interface, richer home menu, modal and transitions */
+.menuTiles{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin:16px 0 22px}
+.menuTile{display:flex;align-items:center;gap:11px;text-align:left;min-height:86px;padding:14px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(145deg,#1a2b4d,#111d37);color:var(--text);box-shadow:0 9px 25px #0002;transition:transform .2s,border-color .2s,background .2s}
+.menuTile:hover{transform:translateY(-4px);border-color:#5de0b377;background:linear-gradient(145deg,#223b64,#142544)}
+.menuTile .tileIcon{width:39px;height:39px;flex:none;border-radius:12px;display:grid;place-items:center;background:#5de0b31b;color:var(--mint);font-size:19px;font-weight:900}
+.menuTile b{display:block;font-size:12px}.menuTile small{display:block;color:var(--muted);font-size:10px;line-height:1.4;margin-top:4px}.menuTile i{margin-left:auto;color:var(--mint);font-style:normal}
+.playTile{background:linear-gradient(130deg,#5de0b3,#62c8ff);color:#082039;border:0}.playTile .tileIcon{background:#09203919;color:#082039}.playTile small,.playTile i{color:#12364a}
+.gameLayerBar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px}.layerTrail{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:11px;letter-spacing:1.2px;font-weight:900}.layerTrail strong{color:var(--mint)}
+body.inGame .top{margin-bottom:12px}body.inGame .nav{display:none}body.inGame .shell{max-width:1120px}
+.page.active{animation:pageIn .34s ease both}@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.scenario.scenePulse{animation:scenePulse .38s ease}@keyframes scenePulse{0%{opacity:.45;transform:translateY(8px) scale(.99)}100%{opacity:1;transform:none}}
+.modalShade,.achievementShade{position:fixed;inset:0;background:#050b19d9;backdrop-filter:blur(12px);z-index:30;display:none;align-items:center;justify-content:center;padding:18px}
+.modalShade.open,.achievementShade.open{display:flex;animation:fadeIn .2s ease}
+.modalCard,.achievementCard{width:min(480px,100%);border:1px solid #ffffff22;border-radius:25px;background:linear-gradient(150deg,#20365d,#101b34);box-shadow:0 25px 90px #0009;padding:27px;position:relative;animation:popIn .28s cubic-bezier(.2,.8,.2,1)}
+.modalClose{position:absolute;right:15px;top:12px;border:0;background:#ffffff12;color:white;border-radius:50%;width:34px;height:34px;font-size:22px}
+.settingRow{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.settingRow b{display:block;font-size:13px}.settingRow small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.settingRow input{width:20px;height:20px;accent-color:var(--mint)}
+.modalActions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.achievementShade{z-index:40;background:#050b19c9}.achievementCard{text-align:center;overflow:hidden}.achievementIcon{font-size:62px;margin:9px 0}.achievementCard h2{font-size:26px;margin:8px 0}.achievementCard p{color:#c4d0e6;line-height:1.55}.achievementBurst{position:absolute;right:-18px;top:-42px;font-size:150px;color:#5de0b315;pointer-events:none}
+.transitionCurtain{position:fixed;inset:0;background:linear-gradient(135deg,#0b1226,#20385e);z-index:50;display:grid;place-items:center;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.transitionCurtain.active{opacity:1;visibility:visible}.transitionMark{font-size:26px;font-weight:1000;letter-spacing:5px;color:white}.transitionMark span{color:var(--mint);margin-left:8px;display:inline-block;animation:spinMark .7s ease}@keyframes spinMark{to{transform:rotate(180deg) scale(1.3)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes popIn{from{opacity:0;transform:translateY(15px) scale(.94)}to{opacity:1;transform:none}}
+body.highContrast{--line:rgba(255,255,255,.25);--muted:#d1dcf1}
+@media(max-width:900px){.menuTiles{grid-template-columns:repeat(2,1fr)}.menuTile:last-child{grid-column:span 2}}
+@media(max-width:520px){.menuTiles{grid-template-columns:1fr 1fr;gap:8px}.menuTile{min-height:78px;padding:11px}.menuTile .tileIcon{width:34px;height:34px}.menuTile b{font-size:11px}.menuTile small{font-size:9px}.gameLayerBar .btn{padding:9px 11px;font-size:11px}.layerTrail{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+@media(max-width:850px){.hero,.layout,.gamegrid{grid-template-columns:1fr}.heroSide{min-height:170px}.coinart{font-size:40px}.levelgrid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.gamegrid{gap:12px}.scenario{min-height:unset}.top{align-items:flex-start}.topright{flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:520px){.shell{padding:14px 12px 30px}.top{margin-bottom:14px}.brand h1{font-size:16px}.brand small{font-size:9px}.logo{width:40px;height:40px}.pill{display:none}.nav{overflow-x:auto;flex-wrap:nowrap}.nav button{white-space:nowrap;padding:10px 12px}.heroMain{padding:22px}.heroSide{padding:18px}.card{padding:16px}.scenario{padding:18px}.scenario h3{font-size:21px}.allocrow{grid-template-columns:1fr 90px 65px}.endinggrid{grid-template-columns:1fr}.gamehead{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+ <div class="brand"><div class="logo">₱</div><div><h1>PRIORITAS</h1><small>MISI UANG TERBATAS · GAME LITERASI EKONOMI</small></div></div>
+ <div class="topright"><span class="pill" id="saveState">● Progres tersimpan otomatis</span></div>
+</header>
+<nav class="nav" aria-label="Navigasi utama">
+ <button class="active" data-page="home">⌂ Beranda</button><button data-page="game">▶ Mainkan</button><button data-page="guide">▤ Panduan</button><button data-page="endings">✦ Galeri Ending</button><button data-page="reviews">☆ Ulasan</button><button data-page="credits">ⓘ Kredit</button>
+</nav>
+
+<section class="page active" id="home">
+ <div class="hero">
+  <div class="heroMain"><div class="eyebrow">Tantangan keputusan ekonomi</div><h2>Uangmu terbatas.<br><span style="color:var(--mint)">Pilihanmu menentukan.</span></h2><p>Atur uang saku, tentukan prioritas, hadapi godaan belanja, dan buktikan bahwa keputusan kecil bisa membawa perubahan besar.</p><button class="btn primary" id="startBtn">Mulai petualangan <span>→</span></button> <button class="btn secondary" id="continueBtn">Lanjutkan</button></div>
+  <div class="heroSide"><div class="coinart">💰📚🛍️</div><div><h3>Bisakah kamu mengelola uang dengan bijak?</h3><p>Lima babak, beragam situasi, dan beberapa kemungkinan akhir. Mainkan dengan santai, pikirkan setiap pilihan.</p></div></div>
+ </div>
+ <div class="menuTiles">
+  <button class="menuTile playTile" id="menuPlay"><span class="tileIcon">▶</span><span><b>Mulai bermain</b><small>Masuk ke petualangan 5 babak</small></span><i>↗</i></button>
+  <button class="menuTile" id="menuSettings"><span class="tileIcon">⚙</span><span><b>Pengaturan</b><small>Atur efek suara dan tampilan</small></span><i>↗</i></button>
+  <button class="menuTile" id="menuGallery"><span class="tileIcon">✦</span><span><b>Galeri ending</b><small>Lihat akhir cerita yang terbuka</small></span><i>↗</i></button>
+  <button class="menuTile" id="menuReviews"><span class="tileIcon">☆</span><span><b>Ulasan</b><small>Beri penilaian dan masukan</small></span><i>↗</i></button>
+  <button class="menuTile" id="menuCredits"><span class="tileIcon">ⓘ</span><span><b>Kredit</b><small>Informasi pengembang</small></span><i>↗</i></button>
+ </div>
+ <div class="stats">
+  <div class="stat"><label>PROGRES CERITA</label><strong id="homeProgress">0/5</strong></div><div class="stat"><label>SALDO SAAT INI</label><strong id="homeMoney">Rp0</strong></div><div class="stat"><label>SKOR KEPUTUSAN</label><strong id="homeScore">0</strong></div><div class="stat"><label>ENDING TERBUKA</label><strong id="homeEnding">0/5</strong></div>
+ </div>
+ <div class="sectionhead"><div><div class="eyebrow">Perjalananmu</div><h3>Lima babak menuju keputusan bijak</h3></div><span class="muted small">± 45 menit</span></div>
+ <div class="levelgrid">
+  <div class="level"><em>🪙</em><b>01 · Uang Saku</b><span>Kenali kebutuhan dan keinginan</span></div><div class="level"><em>📌</em><b>02 · Skala Prioritas</b><span>Urutkan hal yang paling penting</span></div><div class="level"><em>⚖️</em><b>03 · Pilihan Sulit</b><span>Pahami biaya peluang</span></div><div class="level"><em>🛒</em><b>04 · Godaan Belanja</b><span>Belanja secara ekonomis</span></div><div class="level"><em>🌱</em><b>05 · Masa Depan</b><span>Rencanakan keuanganmu</span></div>
+ </div>
+ <div class="sectionhead"><div><div class="eyebrow">Tujuan pembelajaran</div><h3>Setelah bermain, kamu diharapkan mampu…</h3></div></div>
+ <div class="card"><div class="layout"><div><p>✓ Membedakan kebutuhan dan keinginan.</p><p>✓ Menyusun skala prioritas berdasarkan urgensi dan manfaat.</p><p>✓ Menjelaskan biaya peluang dari pilihan ekonomi.</p><p>✓ Menerapkan tindakan ekonomis dalam pengelolaan uang.</p></div><div class="note">Tidak ada satu pilihan yang selalu benar untuk semua keadaan. Pertimbangkan konteks, kebutuhan, manfaat, dan konsekuensi sebelum memutuskan.</div></div></div>
+</section>
+
+<section class="page" id="game">
+ <div class="gameLayerBar"><button class="btn secondary" id="backToMenu">← Menu utama</button><div class="layerTrail"><span>MENU</span><b>›</b><strong id="layerStage">BABAK 01</strong></div><button class="btn secondary" id="gameSettings">⚙</button></div>
+ <div class="gamehead"><div><div class="tag" id="chapterTag">BABAK 01</div><h2 id="chapterTitle">Uang Saku Pertama</h2></div><div class="pill" id="roundLabel">Keputusan 1 dari 3</div></div>
+ <div class="progress" style="margin-bottom:16px"><i id="gameProgress"></i></div>
+ <div class="gamegrid">
+  <div class="scenario">
+   <div class="sceneIcon" id="sceneIcon">🎒</div><div class="tag" id="sceneTag">SITUASI HARIAN</div><h3 id="sceneTitle">Uang saku baru diterima!</h3><p id="sceneText"></p>
+   <div class="budgetbar" id="sceneChips"></div>
+   <div id="interaction"></div>
+   <div class="feedback" id="feedback" role="status"></div>
+   <div class="nextrow"><span class="muted small" id="hintText">Pikirkan konsekuensi sebelum memilih.</span><button class="btn primary hidden" id="nextBtn">Lanjut →</button></div>
+  </div>
+  <aside>
+   <div class="sidecard"><div class="tag">KONDISI KEUANGAN</div><div class="meter"><div class="meterhead"><span>Saldo</span><b id="sideMoney">Rp300.000</b></div><div class="progress"><i id="moneyBar" style="width:100%"></i></div></div><div class="meter"><div class="meterhead"><span>Prioritas</span><b id="priorityVal">50</b></div><div class="progress"><i id="priorityBar"></i></div></div><div class="meter"><div class="meterhead"><span>Literasi keuangan</span><b id="literacyVal">50</b></div><div class="progress"><i id="literacyBar"></i></div></div><div class="meter"><div class="meterhead"><span>Kedisiplinan</span><b id="disciplineVal">50</b></div><div class="progress"><i id="disciplineBar"></i></div></div></div>
+   <div class="sidecard"><h3>🎯 Misi babak ini</h3><p class="small muted" id="missionText">Buat keputusan yang sesuai kebutuhan dan kemampuan.</p><div class="note" id="conceptNote">Konsep: kebutuhan dan keinginan.</div></div>
+   <div class="sidecard"><h3>📒 Catatan keputusan</h3><p class="small muted" id="decisionCount">Belum ada keputusan.</p><button class="btn secondary" style="width:100%;margin-top:5px" id="showLogBtn">Lihat ringkasan</button></div>
+  </aside>
+ </div>
+</section>
+
+<section class="page" id="guide">
+ <div class="card"><div class="eyebrow">Cara bermain</div><h2>Petunjuk singkat sebelum mulai</h2><p class="muted">Permainan dirancang untuk satu jam pelajaran. Bacalah situasi, pertimbangkan pilihan, lalu lihat dampaknya.</p>
+ <div class="layout"><div><h3>Alur permainan</h3><ol class="muted" style="line-height:2"><li>Selesaikan lima babak secara berurutan.</li><li>Setiap babak berisi tiga tantangan interaktif.</li><li>Pilih jawaban atau atur alokasi sesuai instruksi.</li><li>Baca umpan balik untuk memahami konsep ekonomi.</li><li>Di akhir, lihat hasil dan ending yang kamu dapatkan.</li></ol></div><div><h3>Indikator penilaian</h3><p class="small muted">Prioritas mengukur ketepatan mendahulukan kebutuhan. Literasi mengukur pemahaman keputusan dan biaya peluang. Kedisiplinan mengukur konsistensi mengatur anggaran.</p><div class="note">Saldo tinggi saja tidak otomatis berarti keputusanmu terbaik. Mengabaikan kebutuhan penting demi menabung juga dapat merugikan.</div></div></div>
+ <h3 style="margin-top:25px">Istilah penting</h3><div class="endinggrid"><div class="ending"><div class="emoji">📌</div><h4>Skala prioritas</h4><p class="small muted">Urutan kebutuhan berdasarkan tingkat kepentingan, urgensi, dan kemampuan memenuhi.</p></div><div class="ending"><div class="emoji">⚖️</div><h4>Biaya peluang</h4><p class="small muted">Nilai alternatif terbaik yang dilepaskan ketika memilih satu pilihan.</p></div><div class="ending"><div class="emoji">🧠</div><h4>Tindakan ekonomis</h4><p class="small muted">Menggunakan sumber daya terbatas secara bijak untuk memperoleh manfaat optimal.</p></div><div class="ending"><div class="emoji">💳</div><h4>Literasi keuangan</h4><p class="small muted">Pengetahuan dan keterampilan untuk mengambil keputusan keuangan yang tepat.</p></div></div>
+ </div>
+</section>
+
+<section class="page" id="endings">
+ <div class="card"><div class="eyebrow">Koleksi cerita</div><h2>Galeri Ending</h2><p class="muted">Setiap keputusan membentuk perjalananmu. Selesaikan permainan untuk membuka ending.</p><div class="endinggrid" id="endingGallery"></div><button class="btn secondary" style="margin-top:18px" id="playAgain">Mainkan ulang</button></div>
+</section>
+
+<section class="page" id="reviews">
+ <div class="layout">
+  <div class="card"><div class="eyebrow">Suara pemain</div><h2>Ulasan & Masukan</h2><p class="muted">Bagikan pengalamanmu setelah bermain. Ulasan disimpan di perangkat ini dan tidak dikirim ke server.</p>
+   <form class="reviewform" id="reviewForm"><div class="field"><label for="reviewName">Nama (opsional)</label><input id="reviewName" maxlength="35" placeholder="Nama atau inisial"></div><div class="field"><label>Penilaian permainan</label><div class="stars" id="starPicker"><button type="button" data-star="1" aria-label="1 bintang">★</button><button type="button" data-star="2" aria-label="2 bintang">★</button><button type="button" data-star="3" aria-label="3 bintang">★</button><button type="button" data-star="4" aria-label="4 bintang">★</button><button type="button" data-star="5" aria-label="5 bintang">★</button></div></div><div class="field"><label for="reviewText">Ulasan atau saran</label><textarea id="reviewText" maxlength="500" required placeholder="Bagian apa yang paling kamu sukai? Apa yang perlu diperbaiki?"></textarea></div><button class="btn primary" type="submit">Kirim ulasan</button></form>
+  </div>
+  <div class="card"><div class="eyebrow">Masukan pemain</div><h3>Ulasan tersimpan</h3><p class="small muted" id="reviewCount">Belum ada ulasan di perangkat ini.</p><div id="reviewList"></div><p class="note" style="margin-top:15px">Catatan: fitur ini menyimpan ulasan secara lokal pada browser yang digunakan. Untuk mengumpulkan ulasan dari banyak pemain, hubungkan formulir ini ke Google Forms atau layanan backend.</p></div>
+ </div>
+</section>
+
+<section class="page" id="credits">
+ <div class="card"><div class="eyebrow">Di balik permainan</div><h2>Kredit</h2><p class="muted">Terima kasih telah memainkan PRIORITAS: Misi Uang Terbatas.</p>
+  <div class="layout"><div class="sidecard"><div class="sceneIcon">🎮</div><h3>Pengembang & Konsep</h3><p><b>Affridho Tegar Al Amin</b></p><p class="small muted">Konsep permainan, materi pembelajaran, dan pengembangan proyek.</p></div><div class="sidecard"><div class="sceneIcon">📚</div><h3>Materi Pembelajaran</h3><p class="small muted">Disusun untuk mendukung pembelajaran ekonomi mengenai cara bertindak ekonomis, skala prioritas, biaya peluang, dan literasi keuangan.</p></div></div>
+  <h3 style="margin-top:20px">Catatan penggunaan</h3><p class="small muted">Game ini merupakan media pembelajaran. Situasi dan nominal uang di dalam permainan bersifat simulasi, bukan rekomendasi keuangan pribadi. Keputusan terbaik dapat berbeda sesuai kondisi masing-masing.</p>
+  <div class="note">Versi 1.0 · Dibuat dengan HTML, CSS, dan JavaScript. Tidak memerlukan akun atau koneksi internet setelah file dibuka.</div>
+ </div>
+</section>
+
+<div class="footer">PRIORITAS · Misi Uang Terbatas · Belajar mengambil keputusan, satu pilihan pada satu waktu.</div>
+</div>
+<div class="modalShade" id="settingsModal" aria-hidden="true">
+ <div class="modalCard" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <button class="modalClose" id="closeSettings" aria-label="Tutup">×</button>
+  <div class="eyebrow">PENGATURAN</div><h2 id="settingsTitle">Sesuaikan permainan</h2>
+  <p class="muted small">Atur pengalaman bermain sesuai kenyamananmu.</p>
+  <label class="settingRow"><span><b>Efek suara</b><small>Suara pilihan, perpindahan, dan pencapaian</small></span><input type="checkbox" id="sfxToggle" checked></label>
+  <label class="settingRow"><span><b>Animasi transisi</b><small>Efek perpindahan antarbagian permainan</small></span><input type="checkbox" id="motionToggle" checked></label>
+  <label class="settingRow"><span><b>Mode kontras tinggi</b><small>Meningkatkan kontras teks dan panel</small></span><input type="checkbox" id="contrastToggle"></label>
+  <div class="modalActions"><button class="btn secondary" id="resetProgress">Reset progres</button><button class="btn primary" id="doneSettings">Selesai</button></div>
+ </div>
+</div>
+<div class="achievementShade" id="achievementShade" aria-live="polite">
+ <div class="achievementCard" id="achievementCard"><div class="achievementBurst">✦</div><div class="achievementIcon" id="achievementIcon">🏅</div><div class="eyebrow" id="achievementEyebrow">PENCAPAIAN TERBUKA</div><h2 id="achievementTitle">Langkah pertama!</h2><p id="achievementText">Kamu memulai perjalanan.</p><button class="btn primary" id="achievementOk">Lanjutkan</button></div>
+</div>
+<div class="transitionCurtain" id="transitionCurtain"><div class="transitionMark">PRIORITAS<span>✦</span></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const fmt = n => 'Rp' + Math.round(n).toLocaleString('id-ID');
+const clamp = n => Math.max(0,Math.min(100,Math.round(n)));
+const chapters = [
+ {title:'Uang Saku Pertama',icon:'🎒',mission:'Kenali perbedaan kebutuhan dan keinginan. Mulai dengan membuat keputusan yang masuk akal.',concept:'Kebutuhan dan keinginan',scenes:[
+  {type:'choice',tag:'SITUASI 1 · AWAL PEKAN',title:'Uang saku baru diterima!',icon:'🪙',text:'Kamu menerima uang saku Rp300.000 untuk satu minggu. Kamu perlu makan, pergi ke sekolah, dan ada tugas yang harus diselesaikan. Apa langkah pertamamu?',chips:['Saldo awal Rp300.000','Periode 7 hari'],options:[
+   {t:'Pisahkan uang untuk kebutuhan utama terlebih dahulu',d:'Makan, transportasi, dan tugas sekolah diamankan.',delta:{money:-150000,priority:10,literacy:9,discipline:10},fb:'Tepat. Memenuhi kebutuhan penting terlebih dahulu membantu mencegah uang habis untuk hal yang kurang mendesak.',good:true},
+   {t:'Langsung membeli barang yang sedang diinginkan',d:'Belanja dulu, urusan kebutuhan nanti.',delta:{money:-120000,priority:-10,literacy:-4,discipline:-9},fb:'Keinginan boleh dipenuhi, tetapi sebaiknya setelah kebutuhan penting diperhitungkan. Belanja tanpa rencana meningkatkan risiko kekurangan uang.',good:false},
+   {t:'Menghabiskan sedikit demi sedikit tanpa mencatat',d:'Tidak membuat rencana karena merasa masih cukup.',delta:{money:-80000,priority:-5,literacy:-8,discipline:-8},fb:'Pengeluaran kecil yang tidak dicatat dapat menumpuk. Catatan sederhana membuat kondisi uang lebih mudah dikendalikan.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 2 · KEBUTUHAN',title:'Bekal atau jajan tambahan?',icon:'🥪',text:'Kamu masih punya uang untuk makan siang. Kantin menawarkan paket makan yang cukup mengenyangkan seharga Rp18.000. Temanmu mengajak membeli minuman kekinian Rp25.000. Apa keputusanmu?',chips:['Paket makan Rp18.000','Minuman Rp25.000'],options:[
+   {t:'Membeli makan siang terlebih dahulu',d:'Kebutuhan makan dipenuhi dengan biaya terukur.',delta:{money:-18000,priority:8,literacy:5,discipline:5},fb:'Kamu mendahulukan kebutuhan dasar. Ini contoh menyusun prioritas berdasarkan manfaat dan urgensi.',good:true},
+   {t:'Membeli minuman karena sedang tren',d:'Keinginan dipilih sebelum kebutuhan makan.',delta:{money:-25000,priority:-8,literacy:-5,discipline:-6},fb:'Mengikuti tren tidak selalu salah, tetapi kebutuhan makan seharusnya dipastikan lebih dulu.',good:false},
+   {t:'Membeli keduanya tanpa menghitung sisa uang',d:'Semua terasa menyenangkan saat itu.',delta:{money:-43000,priority:-4,literacy:-5,discipline:-8},fb:'Kamu memperoleh keduanya, tetapi belum mempertimbangkan pengeluaran berikutnya. Keputusan ekonomis perlu melihat keseluruhan anggaran.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 3 · RENCANA',title:'Mulai mencatat pengeluaran',icon:'📝',text:'Setelah dua hari, kamu ingin tahu ke mana uangmu pergi. Ada tiga cara yang bisa kamu lakukan. Pilih cara yang paling membantu.',chips:['Sisa saldo diperiksa','Rencana masih bisa diperbaiki'],options:[
+   {t:'Mencatat pengeluaran dan membandingkannya dengan rencana',d:'Kamu tahu pengeluaran aktual dan sisa anggaran.',delta:{money:0,priority:5,literacy:10,discipline:10},fb:'Bagus. Pencatatan membantu mengevaluasi kebiasaan dan memperbaiki keputusan sebelum terlambat.',good:true},
+   {t:'Mengandalkan ingatan saja',d:'Tidak perlu catatan karena merasa ingat.',delta:{money:0,priority:-2,literacy:-5,discipline:-6},fb:'Ingatan bisa keliru, terutama untuk pengeluaran kecil yang sering terjadi. Catatan membuat keputusan lebih akurat.',good:false},
+   {t:'Tidak memeriksa saldo sampai akhir minggu',d:'Menunggu sampai uang hampir habis.',delta:{money:0,priority:-5,literacy:-7,discipline:-8},fb:'Menunda pemeriksaan membuatmu terlambat menyadari masalah. Pemantauan berkala adalah kebiasaan keuangan yang baik.',good:false}
+  ]}
+ ]},
+ {title:'Skala Prioritas',icon:'📌',mission:'Dahulukan kebutuhan yang mendesak dan penting, lalu pertimbangkan kemampuan keuangan.',concept:'Skala prioritas',scenes:[
+  {type:'choice',tag:'SITUASI 1 · TUGAS SEKOLAH',title:'Tiga hal, satu anggaran',icon:'📚',text:'Besok ada tugas kelompok. Kamu perlu mencetak materi Rp15.000, membeli camilan Rp20.000, dan mengganti casing ponsel Rp45.000 karena casing lama masih bisa digunakan. Uangmu Rp60.000. Apa yang didahulukan?',chips:['Anggaran Rp60.000','Tugas dikumpulkan besok'],options:[
+   {t:'Cetak materi, sisanya disimpan',d:'Tugas yang mendesak dipenuhi terlebih dahulu.',delta:{money:-15000,priority:12,literacy:7,discipline:8},fb:'Tepat. Tenggat tugas membuat pencetakan materi lebih mendesak dibanding camilan atau casing baru.',good:true},
+   {t:'Membeli casing baru karena terlihat menarik',d:'Keinginan yang tidak mendesak dipenuhi dulu.',delta:{money:-45000,priority:-12,literacy:-6,discipline:-9},fb:'Casing lama masih berfungsi. Penggantian dapat ditunda agar kebutuhan sekolah terpenuhi.',good:false},
+   {t:'Membeli camilan dan mengabaikan cetak materi',d:'Kesenangan sesaat dipilih.',delta:{money:-20000,priority:-10,literacy:-7,discipline:-7},fb:'Kamu mengabaikan kebutuhan yang memiliki tenggat. Skala prioritas mempertimbangkan urgensi, bukan sekadar keinginan.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 2 · URGENSI',title:'Saat beberapa kebutuhan muncul',icon:'⏰',text:'Minggu ini kamu harus mengisi kartu transportasi, membeli alat tulis yang habis, dan ingin membeli aksesori. Uang hanya cukup untuk dua hal. Mana yang paling tepat?',chips:['Transportasi: Rp30.000','Alat tulis: Rp20.000','Aksesori: Rp35.000'],options:[
+   {t:'Transportasi dan alat tulis',d:'Keduanya mendukung kegiatan sekolah sehari-hari.',delta:{money:-50000,priority:10,literacy:7,discipline:8},fb:'Kamu memilih dua kebutuhan fungsional. Aksesori bisa ditunda sampai kebutuhan utama aman.',good:true},
+   {t:'Transportasi dan aksesori',d:'Satu kebutuhan dan satu keinginan.',delta:{money:-65000,priority:-3,literacy:-2,discipline:-5},fb:'Transportasi memang penting, tetapi alat tulis yang habis juga menunjang kegiatan belajar. Pertimbangkan manfaat dan urgensinya.',good:false},
+   {t:'Alat tulis dan aksesori',d:'Mengabaikan kebutuhan perjalanan ke sekolah.',delta:{money:-55000,priority:-10,literacy:-6,discipline:-8},fb:'Alat tulis penting, tetapi transportasi juga dibutuhkan untuk bersekolah. Prioritas harus mempertimbangkan seluruh kebutuhan.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 3 · URUTKAN',title:'Apa yang harus didahulukan?',icon:'🧭',text:'Kamu memiliki daftar berikut. Pilih strategi yang paling tepat untuk mengurutkannya. Ingat: prioritas ditentukan oleh urgensi, manfaat, dan kondisi, bukan gengsi.',chips:['Kondisi: uang terbatas','Semua pilihan punya konsekuensi'],options:[
+   {t:'Kebutuhan pokok dan kewajiban → kebutuhan pendukung → keinginan',d:'Mengurutkan dari yang paling mendesak.',delta:{money:0,priority:12,literacy:10,discipline:7},fb:'Benar. Urutan ini merupakan pedoman umum. Dalam situasi nyata, tingkat urgensi setiap kebutuhan tetap perlu diperiksa.',good:true},
+   {t:'Barang paling mahal → barang paling murah',d:'Harga dijadikan satu-satunya ukuran.',delta:{money:0,priority:-7,literacy:-6,discipline:-4},fb:'Harga tidak selalu menunjukkan tingkat kepentingan. Barang murah bisa sangat mendesak, sedangkan barang mahal bisa ditunda.',good:false},
+   {t:'Keinginan pribadi → kebutuhan lain',d:'Keinginan menjadi urutan pertama.',delta:{money:0,priority:-10,literacy:-8,discipline:-7},fb:'Mendahulukan keinginan tanpa memeriksa kebutuhan berisiko membuat anggaran tidak cukup.',good:false}
+  ]}
+ ]},
+ {title:'Pilihan Sulit',icon:'⚖️',mission:'Kenali alternatif terbaik yang dikorbankan ketika kamu memilih satu pilihan.',concept:'Biaya peluang',scenes:[
+  {type:'choice',tag:'SITUASI 1 · BIAYA PELUANG',title:'Belajar atau menonton?',icon:'🎬',text:'Kamu memiliki waktu luang dan uang Rp50.000. Ada kelas persiapan ujian gratis yang hanya berlangsung hari ini, tetapi teman mengajak menonton film dengan tiket Rp50.000. Kamu memilih menonton. Apa biaya peluang yang paling relevan?',chips:['Tiket film Rp50.000','Kelas persiapan hanya hari ini'],options:[
+   {t:'Manfaat belajar dari kelas persiapan yang dilepaskan',d:'Alternatif terbaik yang tidak jadi dipilih.',delta:{money:-50000,priority:-5,literacy:12,discipline:-3},fb:'Tepat. Biaya peluang adalah nilai alternatif terbaik yang dikorbankan, dalam kasus ini manfaat mengikuti kelas persiapan.',good:true},
+   {t:'Harga tiket film Rp50.000',d:'Menganggap biaya peluang sama dengan uang yang dibayar.',delta:{money:-50000,priority:0,literacy:-10,discipline:-2},fb:'Harga tiket adalah pengeluaran langsung. Biaya peluang adalah manfaat alternatif terbaik yang kamu lepaskan.',good:false},
+   {t:'Semua kegiatan lain yang mungkin dilakukan',d:'Menghitung seluruh alternatif tanpa memilih yang terbaik.',delta:{money:-50000,priority:-2,literacy:-7,discipline:-2},fb:'Biaya peluang berfokus pada alternatif terbaik berikutnya, bukan seluruh alternatif sekaligus.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 2 · ALTERNATIF TERBAIK',title:'Pilih satu kegiatan',icon:'🏸',text:'Pada Sabtu, kamu hanya punya waktu dan uang untuk satu kegiatan. Pilihan A: mengikuti lokakarya desain yang mendukung cita-cita. Pilihan B: bermain gim bersama teman yang sudah lama direncanakan. Apa yang perlu kamu pertimbangkan?',chips:['Lokakarya: Rp40.000','Bermain: Rp25.000'],options:[
+   {t:'Bandingkan manfaat, tujuan, dan alternatif terbaik yang dikorbankan',d:'Keputusan dibuat berdasarkan tujuan dan keadaan.',delta:{money:0,priority:8,literacy:12,discipline:5},fb:'Bagus. Biaya peluang tidak selalu berupa uang. Waktu, pengalaman, dan manfaat yang dilepaskan juga perlu dipertimbangkan.',good:true},
+   {t:'Pilih yang paling mahal karena pasti lebih baik',d:'Harga dijadikan ukuran manfaat.',delta:{money:0,priority:-4,literacy:-7,discipline:-3},fb:'Harga tidak otomatis menunjukkan manfaat tertinggi. Pertimbangkan tujuan dan kebutuhanmu.',good:false},
+   {t:'Pilih secara acak agar tidak perlu berpikir',d:'Tidak mengevaluasi konsekuensi.',delta:{money:0,priority:-8,literacy:-9,discipline:-5},fb:'Keputusan ekonomi memerlukan pertimbangan. Pilihan acak membuatmu melewatkan kesempatan menilai manfaat dan pengorbanan.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 3 · REFLEKSI',title:'Apa yang sebenarnya dikorbankan?',icon:'🔍',text:'Kamu memilih membeli sepatu olahraga karena sepatu lama rusak. Akibatnya, kamu menunda membeli buku novel yang diinginkan. Bagaimana memahami keputusan ini?',chips:['Sepatu lama rusak','Novel bukan kebutuhan mendesak'],options:[
+   {t:'Manfaat membaca novel yang harus ditunda adalah biaya peluang',d:'Alternatif terbaik yang dilepas perlu dilihat sesuai konteks.',delta:{money:-90000,priority:10,literacy:10,discipline:5},fb:'Benar. Jika novel merupakan alternatif terbaik yang dilepaskan, manfaatnya menjadi biaya peluang. Sepatu dipilih karena lebih dibutuhkan.',good:true},
+   {t:'Biaya peluang selalu sama dengan harga sepatu',d:'Menyamakan biaya peluang dan biaya uang.',delta:{money:-90000,priority:0,literacy:-8,discipline:-2},fb:'Harga sepatu adalah biaya langsung. Biaya peluang merujuk pada nilai alternatif terbaik yang dikorbankan.',good:false},
+   {t:'Tidak ada biaya peluang karena sepatu memang dibutuhkan',d:'Menganggap pilihan kebutuhan tidak punya pengorbanan.',delta:{money:-90000,priority:-4,literacy:-8,discipline:-2},fb:'Setiap pilihan dengan sumber daya terbatas memiliki alternatif yang dilepaskan, meskipun pilihanmu sudah tepat.',good:false}
+  ]}
+ ]},
+ {title:'Godaan Belanja',icon:'🛍️',mission:'Gunakan pertimbangan manfaat, harga, kualitas, dan kebutuhan. Diskon bukan alasan otomatis untuk membeli.',concept:'Tindakan ekonomis dan konsumsi bijak',scenes:[
+  {type:'choice',tag:'SITUASI 1 · DISKON',title:'Diskon besar, perlu atau tidak?',icon:'🏷️',text:'Toko menawarkan diskon 50% untuk tas baru. Harganya turun dari Rp200.000 menjadi Rp100.000. Tas lamamu masih layak dipakai. Apa keputusan terbaik?',chips:['Harga diskon Rp100.000','Tas lama masih berfungsi'],options:[
+   {t:'Menunda pembelian karena belum dibutuhkan',d:'Tidak mengeluarkan uang hanya karena diskon.',delta:{money:0,priority:10,literacy:8,discipline:10},fb:'Tepat. Diskon hanya mengurangi harga, bukan otomatis menjadikan barang sebagai kebutuhan.',good:true},
+   {t:'Membeli karena takut kehilangan diskon',d:'Terpengaruh rasa takut melewatkan promo.',delta:{money:-100000,priority:-9,literacy:-5,discipline:-9},fb:'Promo terbatas dapat mendorong keputusan impulsif. Tanyakan dulu apakah barang tersebut benar-benar dibutuhkan.',good:false},
+   {t:'Membeli dua tas agar diskonnya terasa maksimal',d:'Mengeluarkan lebih banyak uang untuk barang yang belum dibutuhkan.',delta:{money:-200000,priority:-14,literacy:-9,discipline:-12},fb:'Membeli lebih banyak barang yang tidak diperlukan justru memperbesar pengeluaran.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 2 · NILAI MANFAAT',title:'Murah belum tentu hemat',icon:'🔎',text:'Kamu perlu membeli alat tulis. Produk A seharga Rp10.000 dan cepat rusak. Produk B seharga Rp16.000 dan lebih awet. Anggaranmu cukup untuk keduanya, tetapi kamu hanya perlu satu.',chips:['Produk A Rp10.000','Produk B Rp16.000'],options:[
+   {t:'Membandingkan kualitas, daya tahan, dan biaya penggunaan',d:'Memilih berdasarkan manfaat keseluruhan.',delta:{money:-16000,priority:8,literacy:10,discipline:8},fb:'Bagus. Tindakan ekonomis bukan selalu memilih harga termurah, melainkan memperoleh manfaat optimal dari sumber daya.',good:true},
+   {t:'Selalu memilih produk termurah',d:'Harga awal menjadi satu-satunya pertimbangan.',delta:{money:-10000,priority:1,literacy:-4,discipline:2},fb:'Harga murah bisa menguntungkan, tetapi perhatikan kualitas dan daya tahan agar tidak perlu membeli berulang kali.',good:false},
+   {t:'Membeli keduanya meskipun hanya perlu satu',d:'Menghabiskan anggaran untuk stok yang belum diperlukan.',delta:{money:-26000,priority:-7,literacy:-5,discipline:-7},fb:'Pembelian berlebihan dapat mengurangi uang untuk kebutuhan lain. Sesuaikan jumlah pembelian dengan kebutuhan.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 3 · PENGARUH SOSIAL',title:'Ikut tren atau tetap pada rencana?',icon:'👟',text:'Teman-teman membeli sepatu keluaran terbaru. Sepatumu masih nyaman dan tidak rusak. Kamu sebenarnya sedang menabung untuk membeli buku persiapan ujian. Apa tindakan paling ekonomis?',chips:['Target tabungan buku Rp120.000','Sepatu lama masih layak'],options:[
+   {t:'Mempertahankan rencana tabungan untuk buku',d:'Tidak mengubah prioritas hanya karena tekanan sosial.',delta:{money:0,priority:10,literacy:8,discipline:12},fb:'Keputusanmu konsisten dengan tujuan. Literasi keuangan juga berarti mampu mengelola pengaruh sosial terhadap konsumsi.',good:true},
+   {t:'Membeli sepatu agar tidak tertinggal tren',d:'Mengubah rencana demi penerimaan sosial.',delta:{money:-150000,priority:-12,literacy:-6,discipline:-10},fb:'Keinginan diterima lingkungan dapat memengaruhi konsumsi. Evaluasi kembali apakah pembelian tersebut sesuai kebutuhan.',good:false},
+   {t:'Meminjam uang untuk membeli sepatu',d:'Menambah beban keuangan demi keinginan.',delta:{money:-150000,priority:-14,literacy:-10,discipline:-12},fb:'Berutang untuk barang yang belum dibutuhkan dapat menambah beban. Utamakan tujuan keuangan dan kemampuan membayar.',good:false}
+  ]}
+ ]},
+ {title:'Masa Depan',icon:'🌱',mission:'Rangkum semua kemampuan: rencanakan anggaran, siapkan dana cadangan, dan evaluasi pilihan.',concept:'Literasi keuangan dan perencanaan',scenes:[
+  {type:'choice',tag:'SITUASI 1 · RENCANA BULANAN',title:'Buat rencana yang realistis',icon:'📊',text:'Kamu menerima Rp500.000 untuk satu bulan. Kebutuhan transportasi dan makan diperkirakan Rp300.000, perlengkapan belajar Rp70.000. Bagaimana mengelola sisanya?',chips:['Dana Rp500.000','Kebutuhan utama Rp370.000'],options:[
+   {t:'Sisihkan sebagian untuk tabungan dan dana tak terduga',d:'Rencana mencakup kebutuhan, tabungan, dan cadangan.',delta:{money:0,priority:10,literacy:12,discipline:12},fb:'Bagus. Rencana realistis mengutamakan kebutuhan, lalu mengalokasikan sisa secara terencana untuk tabungan dan kejadian tak terduga.',good:true},
+   {t:'Gunakan seluruh sisa untuk hiburan',d:'Tidak menyiapkan cadangan sama sekali.',delta:{money:-130000,priority:-5,literacy:-5,discipline:-8},fb:'Hiburan boleh masuk anggaran, tetapi menghabiskan seluruh sisa uang membuatmu rentan saat ada kebutuhan mendadak.',good:false},
+   {t:'Simpan semua sisa dan tidak boleh menikmati apa pun',d:'Mengabaikan keseimbangan kebutuhan dan rekreasi.',delta:{money:0,priority:3,literacy:2,discipline:4},fb:'Menabung itu baik, tetapi anggaran sebaiknya realistis dan seimbang. Kebutuhan sosial dan rekreasi yang wajar juga dapat direncanakan.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 2 · KEADAAN DARURAT',title:'Pengeluaran tak terduga',icon:'🩹',text:'Tiba-tiba kamu perlu membeli obat seharga Rp35.000. Kamu memiliki tabungan kecil, tetapi juga berencana membeli aksesori. Apa yang sebaiknya dilakukan?',chips:['Obat Rp35.000','Aksesori dapat ditunda'],options:[
+   {t:'Gunakan dana cadangan untuk kebutuhan kesehatan',d:'Kebutuhan mendesak didahulukan.',delta:{money:-35000,priority:12,literacy:10,discipline:8},fb:'Tepat. Dana cadangan membantu menghadapi kebutuhan tak terduga tanpa harus mengorbankan kebutuhan lain secara drastis.',good:true},
+   {t:'Tetap membeli aksesori dan menunda obat',d:'Keinginan mengalahkan kebutuhan kesehatan.',delta:{money:-50000,priority:-15,literacy:-9,discipline:-10},fb:'Kesehatan merupakan kebutuhan penting. Menunda kebutuhan kesehatan demi aksesori bukan keputusan yang bijak.',good:false},
+   {t:'Mengabaikan keduanya tanpa mencari solusi',d:'Tidak menyelesaikan kebutuhan yang muncul.',delta:{money:0,priority:-10,literacy:-8,discipline:-8},fb:'Masalah keuangan perlu dihadapi dengan menyusun ulang anggaran dan mencari pilihan yang aman, bukan mengabaikan kebutuhan.',good:false}
+  ]},
+  {type:'choice',tag:'SITUASI 3 · KEPUTUSAN AKHIR',title:'Satu keputusan terakhir',icon:'🌟',text:'Periode permainan hampir selesai. Kamu memiliki kesempatan untuk menggunakan sisa uang. Kamu bisa menambah tabungan, membeli sesuatu yang diinginkan, atau membantu kebutuhan keluarga. Pilih berdasarkan keadaan keuanganmu.',chips:['Evaluasi saldo dan kebutuhan','Tentukan pilihan akhir'],options:[
+   {t:'Periksa kebutuhan yang belum terpenuhi, lalu alokasikan sisa secara seimbang',d:'Keputusan disesuaikan dengan kondisi, bukan aturan kaku.',delta:{money:0,priority:10,literacy:12,discipline:10},fb:'Pilihan matang. Keputusan ekonomi yang baik mempertimbangkan kebutuhan, tujuan, kemampuan, dan konsekuensi.',good:true},
+   {t:'Habiskan semua sisa karena periode segera berakhir',d:'Tidak mempertimbangkan kebutuhan setelah periode ini.',delta:{money:-70000,priority:-12,literacy:-8,discipline:-12},fb:'Menghabiskan uang hanya karena masih tersisa dapat mengurangi kesiapan menghadapi kebutuhan berikutnya.',good:false},
+   {t:'Menabung seluruhnya tanpa memeriksa kebutuhan penting',d:'Menabung tanpa evaluasi kebutuhan.',delta:{money:0,priority:0,literacy:2,discipline:6},fb:'Menabung merupakan kebiasaan baik, tetapi pastikan kebutuhan penting dan kewajiban sudah dipenuhi terlebih dahulu.',good:false}
+  ]}
+ ]}
+];
+const endingDefs=[
+ {id:'master',name:'Financial Master',emoji:'🏆',type:'good',desc:'Kamu mampu mengelola uang secara seimbang, memenuhi kebutuhan, menyiapkan tabungan, dan memahami konsekuensi pilihan.',rule:'Skor tinggi dan seluruh indikator berkembang baik.'},
+ {id:'wise',name:'Wise Decision Maker',emoji:'🌟',type:'good',desc:'Kamu membuat keputusan yang matang dan mendahulukan hal penting. Tabunganmu mungkin belum besar, tetapi cara berpikirmu sudah bijak.',rule:'Keputusan dan prioritas kuat.'},
+ {id:'enough',name:'Just Enough',emoji:'🙂',type:'neutral',desc:'Kamu berhasil melewati periode, tetapi masih perlu memperbaiki konsistensi dan perencanaan pengeluaran.',rule:'Hasil cukup, tetapi belum konsisten.'},
+ {id:'spender',name:'Impulsive Spender',emoji:'🛍️',type:'bad',desc:'Keinginan dan godaan belanja beberapa kali mengalahkan kebutuhan. Kamu perlu membuat rencana sebelum mengeluarkan uang.',rule:'Prioritas atau kedisiplinan rendah.'},
+ {id:'disaster',name:'Financial Disaster',emoji:'🌧️',type:'bad',desc:'Keputusan yang kurang terencana membuat kebutuhan penting terabaikan dan kondisi keuangan menjadi tidak aman.',rule:'Skor dan kondisi keuangan sangat rendah.'}
+];
+const initial=()=>({started:false,chapter:0,scene:0,money:300000,priority:50,literacy:50,discipline:50,score:0,decisions:[],goodChoices:0,badChoices:0,unlocked:[],ending:null,chapterDone:0});
+let S=load();
+function load(){try{const x=JSON.parse(localStorage.getItem('prioritasSave'));if(x&&typeof x.money==='number'&&Array.isArray(x.decisions))return {...initial(),...x}}catch(e){}return initial()}
+function save(){try{localStorage.setItem('prioritasSave',JSON.stringify(S));$('saveState').textContent='● Progres tersimpan otomatis'}catch(e){$('saveState').textContent='Penyimpanan tidak tersedia'}}
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+let settings={sfx:true,motion:true,contrast:false};
+try{settings={...settings,...JSON.parse(localStorage.getItem('prioritasSettings')||'{}')}}catch(e){}
+let audioCtx=null;
+function playSfx(kind='tap'){
+ if(!settings.sfx)return;
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+  if(!audioCtx)audioCtx=new AC();if(audioCtx.state==='suspended')audioCtx.resume();
+  const now=audioCtx.currentTime,osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+  const patterns={tap:[520,.055,'sine'],good:[660,.12,'triangle'],bad:[190,.16,'sawtooth'],transition:[360,.09,'sine'],level:[740,.22,'triangle'],ending:[520,.28,'triangle']};
+  const [freq,dur,wave]=patterns[kind]||patterns.tap;osc.type=wave;osc.frequency.setValueAtTime(freq,now);
+  if(kind==='good'||kind==='level'||kind==='ending'){osc.frequency.exponentialRampToValueAtTime(freq*1.45,now+dur)}
+  if(kind==='bad'){osc.frequency.exponentialRampToValueAtTime(freq*.65,now+dur)}
+  gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(kind==='transition'?.035:.065,now+.012);gain.gain.exponentialRampToValueAtTime(.0001,now+dur);
+  osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+dur+.02);
+ }catch(e){}
+}
+function showAchievement(title,desc,icon='🏅',eyebrow='PENCAPAIAN TERBUKA'){
+ $('achievementTitle').textContent=title;$('achievementText').textContent=desc;$('achievementIcon').textContent=icon;$('achievementEyebrow').textContent=eyebrow;
+ $('achievementShade').classList.add('open');playSfx('level');
+}
+function closeAchievement(){$('achievementShade').classList.remove('open');playSfx('tap')}
+function openSettings(){$('sfxToggle').checked=settings.sfx;$('motionToggle').checked=settings.motion;$('contrastToggle').checked=settings.contrast;$('settingsModal').classList.add('open')}
+function saveSettings(){settings={sfx:$('sfxToggle').checked,motion:$('motionToggle').checked,contrast:$('contrastToggle').checked};localStorage.setItem('prioritasSettings',JSON.stringify(settings));document.body.classList.toggle('highContrast',settings.contrast);$('settingsModal').classList.remove('open');toast('Pengaturan disimpan');playSfx('good')}
+$('menuPlay').onclick=()=>start(!S.started||!!S.ending);
+$('menuSettings').onclick=openSettings;$('gameSettings').onclick=openSettings;
+$('menuGallery').onclick=()=>page('endings');$('menuReviews').onclick=()=>page('reviews');$('menuCredits').onclick=()=>page('credits');
+$('closeSettings').onclick=()=>$('settingsModal').classList.remove('open');$('doneSettings').onclick=saveSettings;
+$('achievementOk').onclick=closeAchievement;
+$('backToMenu').onclick=()=>page('home');
+$('resetProgress').onclick=()=>{if(confirm('Hapus seluruh progres permainan dan mulai dari awal?')){S=initial();save();$('settingsModal').classList.remove('open');renderHome();toast('Progres berhasil direset')}};
+function page(name,quiet=false){
+ const curtain=$('transitionCurtain');
+ if(!quiet&&settings.motion){curtain.classList.add('active');setTimeout(()=>curtain.classList.remove('active'),260)}
+ if(!quiet)playSfx('transition');
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===name));
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+ document.body.classList.toggle('inGame',name==='game');
+ if(name==='endings')renderEndings();if(name==='reviews')renderReviews();if(name==='home')renderHome();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>page(b.dataset.page)));
+function renderHome(){$('homeProgress').textContent=S.chapterDone+'/5';$('homeMoney').textContent=fmt(S.money);$('homeScore').textContent=S.score;$('homeEnding').textContent=S.unlocked.length+'/5';$('continueBtn').textContent=S.started&&!S.ending?'Lanjutkan permainan':'Mulai dari awal';$('menuPlay').querySelector('b').textContent=S.started&&!S.ending?'Lanjutkan bermain':'Mulai bermain';$('menuPlay').querySelector('small').textContent=S.started&&!S.ending?'Lanjutkan dari progres tersimpan':'Masuk ke petualangan 5 babak'}
+function updateMeters(){ $('sideMoney').textContent=fmt(S.money);$('moneyBar').style.width=clamp(S.money/3000)+'%';[['priority',S.priority],['literacy',S.literacy],['discipline',S.discipline]].forEach(([k,v])=>{$(k+'Val').textContent=clamp(v);$(k+'Bar').style.width=clamp(v)+'%' });$('decisionCount').textContent=S.decisions.length+' keputusan telah dibuat.'}
+const originalGameMarkup=$('game').innerHTML;
+function restoreGameMarkup(){if(!$('chapterTag')){$('game').innerHTML=originalGameMarkup;$('showLogBtn').onclick=()=>{const lines=S.decisions.map((d,i)=>`${i+1}. Babak ${d.chapter+1}: ${d.answer}\n   ${d.feedback}`).join('\n\n');alert(lines||'Belum ada keputusan. Mulai permainan untuk membuat catatan.')};}}
+function start(fresh=false){restoreGameMarkup();if(fresh){S=initial();save()}S.started=true;if(S.ending){S=initial();S.started=true}save();page('game');renderScene();showAchievement('Petualangan dimulai!','Kamu akan melewati lima babak. Baca situasi, pertimbangkan pilihan, lalu pelajari konsekuensinya.','🚀','MISI BARU')}
+$('startBtn').onclick=()=>start(true);$('continueBtn').onclick=()=>start(false);$('playAgain').onclick=()=>start(true);
+function renderScene(){
+ if(S.chapter>=chapters.length){finish();return}
+ const ch=chapters[S.chapter],sc=ch.scenes[S.scene];
+ $('chapterTag').textContent='BABAK '+String(S.chapter+1).padStart(2,'0')+' · '+ch.title.toUpperCase();
+ $('layerStage').textContent='BABAK '+String(S.chapter+1).padStart(2,'0');
+ $('chapterTitle').textContent=ch.title;$('roundLabel').textContent='Tantangan '+(S.scene+1)+' dari 3';
+ $('gameProgress').style.width=((S.chapter*3+S.scene)/15*100)+'%';
+ $('sceneIcon').textContent=sc.icon;$('sceneTag').textContent=sc.tag;$('sceneTitle').textContent=sc.title;$('sceneText').textContent=sc.text;
+ $('sceneChips').innerHTML=sc.chips.map(x=>`<span class="budgetchip">${x}</span>`).join('');
+ $('missionText').textContent=ch.mission;$('conceptNote').textContent='Konsep: '+ch.concept+'.';
+ $('feedback').className='feedback';$('feedback').textContent='';$('nextBtn').classList.add('hidden');$('hintText').textContent='Pikirkan konsekuensi sebelum memilih.';
+ const interaction=$('interaction');interaction.innerHTML='';
+ sc.options.forEach((o,i)=>{const b=document.createElement('button');b.className='choice';b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span><strong>${o.t}</strong><small>${o.d}</small></span>`;b.addEventListener('click',()=>choose(i));interaction.appendChild(b)});
+ updateMeters();save();
+ if(settings.motion){const scard=document.querySelector('.scenario');if(scard){scard.classList.remove('scenePulse');void scard.offsetWidth;scard.classList.add('scenePulse')}}
+}
+function choose(i){
+ const sc=chapters[S.chapter].scenes[S.scene],o=sc.options[i];if($('nextBtn').dataset.done==='1')return;playSfx(o.good?'good':'bad');
+ S.money=Math.max(-50000,S.money+o.delta.money);S.priority=clamp(S.priority+o.delta.priority);S.literacy=clamp(S.literacy+o.delta.literacy);S.discipline=clamp(S.discipline+o.delta.discipline);
+ const gain=(o.good?10:3)+Math.max(0,o.delta.literacy);S.score+=gain;if(o.good)S.goodChoices++;else S.badChoices++;
+ S.decisions.push({chapter:S.chapter,scene:S.scene,choice:i,title:sc.title,answer:o.t,good:o.good,feedback:o.fb});
+ document.querySelectorAll('.choice').forEach((b,j)=>{b.disabled=true;if(j===i)b.style.borderColor=o.good?'#5de0b3':'#ff8fa8'});
+ const fb=$('feedback');fb.textContent=(o.good?'✓ Keputusan yang baik. ':'↗ Ada hal yang perlu dipertimbangkan. ')+o.fb;fb.classList.add('show');if(!o.good)fb.classList.add('bad');
+ $('hintText').textContent='Baca pembahasan sebelum melanjutkan.';$('nextBtn').classList.remove('hidden');$('nextBtn').dataset.done='1';$('nextBtn').textContent=S.scene===2?(S.chapter===4?'Lihat ending →':'Selesaikan babak →'):'Tantangan berikutnya →';
+ updateMeters();save();
+}
+$('nextBtn').onclick=()=>{
+ if($('nextBtn').dataset.done!=='1')return;$('nextBtn').dataset.done='0';
+ const wasChapter=S.chapter;
+ if(S.scene<2)S.scene++;else{S.chapterDone=Math.max(S.chapterDone,S.chapter+1);S.chapter++;S.scene=0}
+ save();renderScene();
+ if(S.chapter>wasChapter&&S.chapter<5){const ch=chapters[S.chapter];showAchievement('Babak selesai!',`Kamu membuka babak berikutnya: ${ch.title}. ${ch.mission}`,ch.icon,'PROGRES CERITA');}
+ else if(S.chapter===5){playSfx('ending');}
+ else if(S.decisions.length===5||S.decisions.length===10){showAchievement('Kamu semakin dekat!',`${S.decisions.length} dari 15 keputusan telah diselesaikan. Terus pertimbangkan kebutuhan dan konsekuensinya.`,'✨','PENCAPAIAN PROGRES');}
+};
+$('showLogBtn').onclick=()=>{const lines=S.decisions.map((d,i)=>`${i+1}. Babak ${d.chapter+1}: ${d.answer}\n   ${d.feedback}`).join('\n\n');alert(lines||'Belum ada keputusan. Mulai permainan untuk membuat catatan.')};
+function finish(){
+ S.chapterDone=5;S.ending=pickEnding();if(!S.unlocked.includes(S.ending))S.unlocked.push(S.ending);save();playSfx('ending');
+ const e=endingDefs.find(x=>x.id===S.ending);
+ $('game').innerHTML=`<div class="resultbanner"><div class="eyebrow">PERJALANAN SELESAI</div><div class="big">${e.emoji}</div><h2>${e.name}</h2><p class="muted" style="max-width:650px;margin:0 auto 18px">${e.desc}</p><div class="stats" style="max-width:700px;margin:20px auto"><div class="stat"><label>SKOR</label><strong>${S.score}</strong></div><div class="stat"><label>SALDO AKHIR</label><strong>${fmt(S.money)}</strong></div><div class="stat"><label>KEPUTUSAN BAIK</label><strong>${S.goodChoices}/15</strong></div><div class="stat"><label>ENDING</label><strong>${S.unlocked.length}/5</strong></div></div><button class="btn primary" id="endingReview">Lihat evaluasi →</button> <button class="btn secondary" id="endingReplay">Main ulang</button></div><div class="card" style="margin-top:16px"><h3>📖 Evaluasi perjalananmu</h3><p class="muted small">Prioritas: ${S.priority}/100 · Literasi keuangan: ${S.literacy}/100 · Kedisiplinan: ${S.discipline}/100</p><p class="small">Kamu membuat ${S.decisions.length} keputusan. Coba baca kembali ringkasan pilihan untuk memahami keputusan mana yang paling berpengaruh.</p><button class="btn secondary" id="endingLog">Lihat ringkasan keputusan</button></div>`;
+ $('endingReview').onclick=()=>page('reviews');$('endingReplay').onclick=()=>start(true);$('endingLog').onclick=()=> $('showLogBtn').click();
+ renderHome();setTimeout(()=>showAchievement('Ending terbuka!',`${e.name}: ${e.desc}`,e.emoji,'HASIL PERJALANAN'),350);
+}
+function pickEnding(){
+ const avg=(S.priority+S.literacy+S.discipline)/3;
+ if(S.money<0||avg<28||S.priority<18)return 'disaster';
+ if(avg>=82&&S.priority>=78&&S.literacy>=78&&S.discipline>=72&&S.goodChoices>=11)return 'master';
+ if(avg>=68&&S.priority>=62&&S.literacy>=62&&S.goodChoices>=8)return 'wise';
+ if(avg<48||S.badChoices>=9)return 'spender';
+ return 'enough';
+}
+function renderEndings(){
+ $('endingGallery').innerHTML=endingDefs.map(e=>{const open=S.unlocked.includes(e.id);return `<div class="ending ${open?'':'lock'}"><div class="emoji">${open?e.emoji:'🔒'}</div><h4>${open?e.name:'Ending terkunci'}</h4><p class="small muted">${open?e.desc:'Selesaikan permainan dan ambil keputusan yang berbeda untuk membuka ending ini.'}</p><span class="tag">${open?'TERBUKA':e.type.toUpperCase()}</span></div>`}).join('');
+}
+let selectedStars=0;
+$('starPicker').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{selectedStars=Number(b.dataset.star);$('starPicker').querySelectorAll('button').forEach(x=>x.classList.toggle('selected',Number(x.dataset.star)<=selectedStars))}));
+function getReviews(){try{return JSON.parse(localStorage.getItem('prioritasReviews')||'[]')}catch(e){return []}}
+$('reviewForm').addEventListener('submit',e=>{e.preventDefault();if(!selectedStars){toast('Pilih jumlah bintang terlebih dahulu.');return}const reviews=getReviews();reviews.unshift({name:$('reviewName').value.trim()||'Pemain',stars:selectedStars,text:$('reviewText').value.trim(),date:new Date().toLocaleDateString('id-ID')});try{localStorage.setItem('prioritasReviews',JSON.stringify(reviews.slice(0,30)))}catch(err){toast('Ulasan tidak dapat disimpan di perangkat ini.');return}$('reviewForm').reset();selectedStars=0;$('starPicker').querySelectorAll('button').forEach(x=>x.classList.remove('selected'));renderReviews();toast('Terima kasih! Ulasan tersimpan di perangkat ini.')});
+function renderReviews(){const r=getReviews();$('reviewCount').textContent=r.length?`${r.length} ulasan tersimpan di browser ini.`:'Belum ada ulasan di perangkat ini.';$('reviewList').innerHTML=r.map(x=>`<div class="reviewitem"><div style="display:flex;justify-content:space-between;gap:8px"><b>${escapeHTML(x.name)}</b><span style="color:var(--gold)">${'★'.repeat(x.stars)}${'☆'.repeat(5-x.stars)}</span></div><p class="small">${escapeHTML(x.text)}</p><span class="muted" style="font-size:10px">${escapeHTML(x.date)}</span></div>`).join('')}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function init(){renderHome();renderEndings();renderReviews();$('nextBtn').dataset.done='0';document.body.classList.toggle('highContrast',settings.contrast);if(S.started&&!S.ending){$('continueBtn').textContent='Lanjutkan permainan';}else{$('continueBtn').textContent='Mulai dari awal'}}
+init();
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('settingsModal').classList.remove('open');$('achievementShade').classList.remove('open')}});
+})();
+</script>
+</body>
+</html>
